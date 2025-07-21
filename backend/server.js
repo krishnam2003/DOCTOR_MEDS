@@ -1,7 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors'); // Add this line
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -9,11 +9,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors()); 
+app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/', {
+mongoose.connect('mongodb://localhost:27017/User', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -21,11 +21,17 @@ mongoose.connect('mongodb://localhost:27017/', {
 .catch((err) => console.error('Could not connect to MongoDB', err));
 
 // Routes
-app.use('/api/signup', require('./routes/signup'));
-app.use('/api/login', require('./routes/login'));
-app.use('/api/admin', require('./routes/admin'));
-app.use('/api/doctor', require('./routes/doctor'));
-app.use('/api/patient', require('./routes/patient'));
+import signupRouter from './routes/signup.js';
+import loginRouter from './routes/login.js';
+import adminRouter from './routes/admin.js';
+import doctorRouter from './routes/doctor.js';
+import patientRouter from './routes/patient.js';
+
+app.use('/api/signup', signupRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api/doctor', doctorRouter);
+app.use('/api/patient', patientRouter);
 
 // Root route
 app.get('/', (req, res) => {

@@ -1,10 +1,10 @@
-const express = require('express');
-const Doctor = require('../models/Doctor');
-const Admin = require('../models/Admin');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
-const Appointment = require('../models/Appointment');
+import express from 'express';
+import Doctor from '../models/Doctor.js';
+import Admin from '../models/Admin.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import User from '../models/User.js';
+import Appointment from '../models/Appointment.js';
 
 const router = express.Router();
 
@@ -150,4 +150,4 @@ router.get('/patient-overview', auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

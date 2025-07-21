@@ -1,8 +1,8 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const Admin = require('./models/Admin');
+import 'dotenv/config';
+import mongoose from 'mongoose';
+import Admin from './models/Admin.js';
 
-mongoose.connect('mongodb://localhost:27017/', {
+mongoose.connect('mongodb://localhost:27017/User', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

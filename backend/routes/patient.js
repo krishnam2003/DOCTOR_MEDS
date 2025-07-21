@@ -1,9 +1,9 @@
-const express = require('express');
-const Patient = require('../models/User');
-const jwt = require('jsonwebtoken');
-const Appointment = require('../models/Appointment');
-const Doctor = require('../models/Doctor');
-const Prescription = require('../models/Prescription');
+import express from 'express';
+import Patient from '../models/User.js';
+import jwt from 'jsonwebtoken';
+import Appointment from '../models/Appointment.js';
+import Doctor from '../models/Doctor.js';
+import Prescription from '../models/Prescription.js';
 
 const router = express.Router();
 
@@ -134,4 +134,4 @@ router.get('/prescriptions', auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

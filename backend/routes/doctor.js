@@ -1,9 +1,9 @@
-const express = require('express');
-const Doctor = require('../models/Doctor');
-const jwt = require('jsonwebtoken');
-const Appointment = require('../models/Appointment');
-const User = require('../models/User');
-const Prescription = require('../models/Prescription');
+import express from 'express';
+import Doctor from '../models/Doctor.js';
+import jwt from 'jsonwebtoken';
+import Appointment from '../models/Appointment.js';
+import User from '../models/User.js';
+import Prescription from '../models/Prescription.js';
 
 const router = express.Router();
 
@@ -160,8 +160,8 @@ router.post('/prescribe-medication', auth, async (req, res) => {
 
     res.status(201).json({ message: 'Medication prescribed successfully', prescription: savedPrescription });
   } catch (error) {
-    // console.error('Error prescribing medication:', error);
-    // res.status(500).send({ error: 'Server error' });
+    console.error('Error prescribing medication:', error);
+    res.status(500).send({ error: 'Server error' });
   }
 });
 
@@ -204,8 +204,8 @@ router.delete('/prescriptions/:id', auth, async (req, res) => {
     }
     res.json({ message: 'Prescription deleted successfully' });
   } catch (error) {
-    // console.error('Error deleting prescription:', error);
-    // res.status(500).send({ error: 'Server error', details: error.message });
+    console.error('Error deleting prescription:', error);
+    res.status(500).send({ error: 'Server error', details: error.message });
   }
 });
 
@@ -246,4 +246,4 @@ router.get('/appointments', auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

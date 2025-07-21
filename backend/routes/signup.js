@@ -1,12 +1,12 @@
-const express = require('express');
-const User = require('../models/User');
+import express from 'express';
+import User from '../models/User.js';
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   const { firstName, lastName, email, password, role } = req.body;
 
-  console.log('Received data:', req.body); // Add this line to log the request body
+  console.log('Received data:', req.body); // Logging the request body
 
   try {
     const user = new User({ firstName, lastName, email, password, role });
@@ -20,4 +20,4 @@ router.post('/', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
